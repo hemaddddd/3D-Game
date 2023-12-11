@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dp3hixpd1qlny"]
+[gd_scene load_steps=12 format=3 uid="uid://dkhe2heb8wpml"]
 
-[ext_resource type="Script" path="res://Player/blaster.gd" id="1_x6w5q"]
-[ext_resource type="ArrayMesh" uid="uid://cx6imbyj1uirl" path="res://Assets/muzzleflash.obj" id="2_wvv20"]
-[ext_resource type="Material" uid="uid://dittkall0v248" path="res://Assets/muzzle.tres" id="3_e3lqk"]
+[ext_resource type="Script" path="res://Player/blaster.gd" id="1_8gmhb"]
+[ext_resource type="ArrayMesh" uid="uid://cx6imbyj1uirl" path="res://Assets/muzzleflash.obj" id="2_oaewe"]
+[ext_resource type="Material" uid="uid://dittkall0v248" path="res://Assets/muzzle.tres" id="3_yygd2"]
+[ext_resource type="Texture2D" uid="uid://cfd3ulkxxbc83" path="res://Assets/crosshair_white_small.png" id="4_lgi3q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i381p"]
 resource_name = "darkMetal"
@@ -143,33 +144,26 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_et7kw")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbqwj"]
-albedo_color = Color(1, 0.0313726, 0.054902, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_jtt16"]
-material = SubResource("StandardMaterial3D_hbqwj")
-top_radius = 0.01
-bottom_radius = 0.01
-height = 30.0
-
-[node name="blaster" type="Node3D"]
+[node name="blaster2" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.130833, 0.59161, 0.0340914)
-script = ExtResource("1_x6w5q")
+script = ExtResource("1_8gmhb")
 
 [node name="blasterF2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 3.16385e-09, 0.999345, -0.0361902, 8.73655e-08, -0.0361902, -0.999345, -0.00712419, 1.92967, -0.168719)
 mesh = SubResource("ArrayMesh_8vf51")
 skeleton = NodePath("")
 
 [node name="Muzzle" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.8, 1.6, -0.8)
 visible = false
 
 [node name="Muzzleflash" type="MeshInstance3D" parent="Muzzle"]
 transform = Transform3D(-0.3, 0, -4.52987e-08, 0, 0.3, 0, 4.52987e-08, 0, -0.3, 0, 0.0683701, 0.686216)
-mesh = ExtResource("2_wvv20")
+mesh = ExtResource("2_oaewe")
 skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("3_e3lqk")
-surface_material_override/1 = ExtResource("3_e3lqk")
-surface_material_override/2 = ExtResource("3_e3lqk")
+surface_material_override/0 = ExtResource("3_yygd2")
+surface_material_override/1 = ExtResource("3_yygd2")
+surface_material_override/2 = ExtResource("3_yygd2")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Muzzle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0635957, 0.603546)
@@ -184,10 +178,10 @@ one_shot = true
 
 [node name="Aim" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0783499, 0.590515)
-target_position = Vector3(0, 0, 10)
+target_position = Vector3(0, 0, -30)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.00825298, 14.7985)
-mesh = SubResource("CylinderMesh_jtt16")
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 2, -0.8)
+texture = ExtResource("4_lgi3q")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
