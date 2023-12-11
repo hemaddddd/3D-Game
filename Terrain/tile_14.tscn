@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://c802llo3vac0f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mvsxq"]
+albedo_color = Color(0.266667, 0.266667, 0.266667, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o6x4k"]
+material = SubResource("StandardMaterial3D_mvsxq")
+size = Vector3(4, 0.01, 4)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_caiqj"]
+points = PackedVector3Array(2.03175, 0.026746, 2.03175, -2.03175, -0.036746, -2.03175, -2.03175, 0.026746, -2.03175, 2.03175, -0.036746, -2.03175, -2.03175, -0.036746, 2.03175, -2.03175, 0.026746, 2.03175, 2.03175, 0.026746, -2.03175, 2.03175, -0.036746, 2.03175)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vwnx"]
+albedo_color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xry3g"]
+material = SubResource("StandardMaterial3D_7vwnx")
+size = Vector3(4.2, 4, 0.1)
+
+[node name="Tile14" type="StaticBody3D"]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0479041, -0.074558, -0.168642)
+mesh = SubResource("BoxMesh_o6x4k")
+
+[node name="Floor_CS" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_caiqj")
+
+[node name="N" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.13001, 1.88453, -0.00982285)
+mesh = SubResource("BoxMesh_xry3g")
+
+[node name="N_CS" type="CollisionShape3D" parent="."]
+
+[node name="E" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.88453, -2.13859)
+mesh = SubResource("BoxMesh_xry3g")
+
+[node name="E_CS" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.9, 1.9, 0)
+
+[node name="S" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.0313933, 0, -0.999507, 0, 1, 0, 0.999507, 0, -0.0313933, 2.04403, 1.88453, -0.0594001)
+mesh = SubResource("BoxMesh_xry3g")
+
+[node name="S_CS" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 1.9)
